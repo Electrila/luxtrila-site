@@ -1,0 +1,246 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url('assets/city-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Rajdhani', sans-serif;
+  color: white;
+}
+
+/* Dim overlay for contrast */
+.overlay {
+  background: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  min-height: 100vh;
+  padding: 8vh 1rem 6vh;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Central content */
+.content-box {
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+/* Logo styling */
+.logo-box {
+  border: 2.5px solid #39ffec;
+  display: inline-block;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 25px #39ffec;
+}
+
+.logo {
+  width: 250px;
+  display: block;
+}
+
+/* Tagline */
+.tagline {
+  font-size: 3rem;
+  font-weight: 550;
+  font-style: italic;
+  color: #39ffec;
+  margin: 1.5rem 0;
+  text-shadow: 0 0 10px #39ffec;
+}
+
+/* Glow line */
+.glow-line {
+  width: 270px;
+  height: 2px;
+  margin: 2rem auto 2rem auto;
+  border-radius: 2px;
+
+  background: linear-gradient(90deg, #e78bb6, #39ffec, #ff66cc, #e78bb6);
+  background-size: 400% 100%;
+  animation: colorShift 6s linear infinite;
+
+  box-shadow:
+    0 0 6px #ff66cc,
+    0 0 12px #39ffec,
+    0 0 18px #e78bb6;
+}
+
+/* Description */
+.description {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #ffccff;
+  text-shadow: 
+    0 0 6px #ff66cc,
+    0 0 12px #ff99dd;
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Hover interaction on the description */
+/*
+.description:hover {
+  text-shadow: 
+    0 0 8px #ff66cc,
+    0 0 16px #ff99dd,
+    0 0 24px #ffcaff;
+  transition: text-shadow 0.3s ease-in-out;
+}
+*/
+
+/* Coming soon text */
+.coming-soon {
+  font-family: 'Monoton', cursive;
+  font-size: 5.5rem;
+  font-weight: normal;
+  color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  opacity: 0;
+
+  -webkit-text-stroke: 0.5px transparent;
+
+  animation: flickerSnap 2.2s ease-in-out 1.2s forwards;
+}
+
+/* Particle container */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* Glow effect */
+canvas {
+  filter: blur(2px) brightness(1.4) contrast(1.2);
+  opacity: 0.85;
+  z-index: -2;
+}
+
+/* Fog layer */
+#fog-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  pointer-events: none;
+  background: radial-gradient(circle at 40% 40%, #301142 0%, #0a0014 70%);
+  opacity: 0.5;
+  animation: fogMotion 25s ease-in-out infinite;
+  background-size: 200% 200%;
+  filter: blur(8px) brightness(1.1);
+}
+
+@keyframes fogMotion {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes colorShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes flickerSnap {
+  0% {
+    opacity: 0;
+    color: transparent;
+    -webkit-text-stroke: 0.5px transparent;
+    text-shadow: none;
+  }
+
+  8% {
+    opacity: 0.2;
+    color: #ff00aa;
+    -webkit-text-stroke: 0.5px #ff00aa;
+    text-shadow: 0 0 4px #ff00aa;
+  }
+
+  14% {
+    opacity: 0;
+    color: transparent;
+    -webkit-text-stroke: 0.5px transparent;
+    text-shadow: none;
+  }
+
+  22% {
+    opacity: 0.6;
+    color: #ff33bb;
+    -webkit-text-stroke: 0.5px #ff33bb;
+    text-shadow: 0 0 10px #ff33bb;
+  }
+
+  30% {
+    opacity: 0.1;
+    color: transparent;
+    -webkit-text-stroke: 0.5px transparent;
+    text-shadow: none;
+  }
+
+  45% {
+    opacity: 0.8;
+    color: #ff00aa;
+    -webkit-text-stroke: 0.5px #ff66cc;
+    text-shadow: 0 0 15px #ff33bb, 0 0 25px #ff66cc;
+  }
+
+  100% {
+    opacity: 1;
+    color: #ff00aa;
+    -webkit-text-stroke: 0.5px #ff99dd;
+    text-shadow:
+      0 0 5px #ff00aa,
+      0 0 15px #ff00aa,
+      0 0 30px #ff33bb,
+      0 0 60px #ff66cc;
+  }
+}
+
+/* Media query for mobile */
+@media (max-width: 768px) {
+  .overlay {
+    padding-top: 4rem;
+  }
+
+  .tagline {
+    font-size: 2rem;
+  }
+
+  .coming-soon {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    margin-top: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .overlay {
+    justify-content: center;
+  }
+}
