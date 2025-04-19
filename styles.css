@@ -123,3 +123,48 @@ body {
       background-position: 100% 50%;
     }
   }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 1rem;
+      background-position: center;
+    }
+  
+    .container {
+      padding-top: 6rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border-radius: 12px;
+    }
+  
+    .logo {
+      width: 100%;
+      max-width: 320px;
+      margin-top: -8rem;
+      margin-bottom: 0;
+    }
+  
+    .glow-underline {
+      width: 60px;
+      margin: -2rem auto 1.5rem auto;
+    }
+  
+    .tagline {
+      font-size: 1.5rem;
+      margin-top: -4rem;
+      white-space: normal;
+      padding: 0 0.5rem;
+    }
+  
+    .description {
+      font-size: 1rem;
+      white-space: normal;
+      line-height: 1.6;
+      padding: 0 0.5rem;
+    }
+  
+    .coming-soon {
+      font-size: 2.2rem;
+      margin-top: 2rem;
+    }
+  }
