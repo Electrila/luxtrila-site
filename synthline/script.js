@@ -1,0 +1,75 @@
+console.log("Script is loaded");
+
+const candles = [
+    {
+      name: "Neon Nights",
+      description: "Lorem ipsum."
+    },
+    {
+      name: "Dreamdrive",
+      description: "Lorem ipsum."
+    },
+    {
+      name: "Lucid Fuse",
+      description: "Lorem ipsum."
+    },
+    {
+      name: "Chromafloat",
+      description: "Lorem ipsum."
+    },
+    {
+      name: "Hyperlume",
+      description: "Lorem ipsum."
+    },
+    {
+      name: "Midnight Arcade",
+      description: "Lorem ipsum."
+    }
+  ];
+  
+  let current = 0;
+  
+  function renderCarousel() {
+    const carousel = document.getElementById('carousel');
+    carousel.innerHTML = '';
+  
+    const prev = (current - 1 + candles.length) % candles.length;
+    const next = (current + 1) % candles.length;
+  
+    const slide = document.createElement('div');
+    slide.className = 'carousel-slide';
+  
+    [prev, current, next].forEach((index, i) => {
+      const candle = document.createElement('div');
+      candle.className = 'candle';
+      if (i === 1) candle.classList.add('center');
+  
+      const img = document.createElement('div');
+      img.className = 'candle-img';
+      img.textContent = candles[index].name;
+  
+      const desc = document.createElement('p');
+      desc.textContent = candles[index].description;
+
+      candle.appendChild(img);
+      candle.appendChild(desc);
+      slide.appendChild(candle);
+    });
+  
+    carousel.appendChild(slide);
+  }
+  
+  function nextCandle() {
+    current = (current + 1) % candles.length;
+    renderCarousel();
+  }
+  
+  function prevCandle() {
+    current = (current - 1 + candles.length) % candles.length;
+    renderCarousel();
+  }
+  
+  window.onload = () => {
+    renderCarousel();
+  };
+  
