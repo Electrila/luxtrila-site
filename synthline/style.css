@@ -1,0 +1,116 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Barlow', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url('assets/synthwave-bg.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Hero Title */
+.hero {
+  text-align: center;
+  padding: 5rem 2rem 2rem;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 5rem;
+  font-weight: bolder;
+  color: #b366ff;
+  text-shadow:
+    0 0 8px #6e00ff,
+    0 0 16px #c266ff,
+    0 0 24px #aa00ff;
+  letter-spacing: 5px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #cfaeff;
+  text-shadow: 0 0 6px #aa66ff;
+  margin-top: 0.5rem;
+  letter-spacing: 3px;
+}
+
+/* Candle Grid */
+.candle-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Candle */
+.candle {
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.candle:hover {
+  transform: scale(1.04);
+}
+
+.candle-img {
+  height: 200px;
+  background-color: #110024;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  color: #a86cff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow:
+    0 0 8px #aa00ff,
+    0 0 12px #cc66ff;
+  box-shadow: 0 0 12px #a000ff55;
+  transition: box-shadow 0.3s ease;
+}
+
+.candle:hover .candle-img {
+  box-shadow: 0 0 24px #a000ff, 0 0 48px #cc66ff;
+}
+
+.candle p {
+  font-size: 0.95rem;
+  color: #e0caff;
+  text-shadow: 0 0 4px #944eea;
+  line-height: 1.4;
+}
+
+/* Responsive Typography */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .candle-img {
+    height: 180px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .candle-showcase {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
