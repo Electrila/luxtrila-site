@@ -69,7 +69,7 @@ body, html {
   font-size: 2.25rem;
   color: #ffaeff;
   text-shadow: 0 0 6px #aa66ff;
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
 /* Carousel Layout */
@@ -79,6 +79,7 @@ body, html {
   justify-content: center;
   gap: 2rem;
   margin: 3rem auto;
+  margin-top: 0;
   padding: 2rem;
   width: 100%;
   flex-wrap: wrap;
@@ -155,7 +156,7 @@ body, html {
 
 .candle p {
   display: none;
-  font-size: 0.1.25rem;
+  font-size: 0.92rem;
   color: #f0caff;
   text-shadow: 0 0 4px #aa66ff;
   line-height: 1.4;
@@ -211,6 +212,16 @@ body, html {
   display: block;
 }
 
+.candle:not(.center):hover {
+  transform: scale(0.82);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.candle:not(.center):hover .candle-img {
+  box-shadow: 0 0 10px #ff66cc88;
+}
+
 /* Carousel rotation animation */
 .carousel-slide {
   display: flex;
@@ -238,4 +249,15 @@ body, html {
     transform: scale(1.15) rotateY(0deg);
     opacity: 1;
   }
+}
+
+.logo-footer {
+  text-align: center;
+}
+
+.logo-footer img {
+  width: 200px;
+  max-width: 80%;
+  filter: drop-shadow(0 0 12px #00f0ff) drop-shadow(0 0 32px #ff00ff);
+  opacity: 1;
 }

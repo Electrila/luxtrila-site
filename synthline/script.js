@@ -3,27 +3,27 @@ console.log("Script is loaded");
 const candles = [
     {
       name: "Neon Nights",
-      description: "Lorem ipsum."
+      description: "Cardamom + Sandalwood + Moss"
     },
     {
       name: "Dreamdrive",
-      description: "Lorem ipsum."
+      description: "Pine + Vanilla + Cedar"
     },
     {
       name: "Lucid Fuse",
-      description: "Lorem ipsum."
+      description: "Bergamot + Chocolate + Amber"
     },
     {
       name: "Chromafloat",
-      description: "Lorem ipsum."
+      description: "Jasmine + Citrus + Aquatic"
     },
     {
       name: "Hyperlume",
-      description: "Lorem ipsum."
+      description: "Lemon + Grapefruit + Green Leaves"
     },
     {
       name: "Midnight Arcade",
-      description: "Lorem ipsum."
+      description: "Coffee + Praline + Smoke"
     }
   ];
   
@@ -40,21 +40,32 @@ const candles = [
     slide.className = 'carousel-slide';
   
     [prev, current, next].forEach((index, i) => {
-      const candle = document.createElement('div');
-      candle.className = 'candle';
-      if (i === 1) candle.classList.add('center');
-  
-      const img = document.createElement('div');
-      img.className = 'candle-img';
-      img.textContent = candles[index].name;
-  
-      const desc = document.createElement('p');
-      desc.textContent = candles[index].description;
-
-      candle.appendChild(img);
-      candle.appendChild(desc);
-      slide.appendChild(candle);
-    });
+        const candle = document.createElement('div');
+        candle.className = 'candle';
+        if (i === 1) {
+          candle.classList.add('center');
+        } else {
+          // Add click event to rotate carousel
+          candle.addEventListener('click', () => {
+            if (i === 0) {
+              prevCandle();
+            } else if (i === 2) {
+              nextCandle();
+            }
+          });
+        }
+      
+        const img = document.createElement('div');
+        img.className = 'candle-img';
+        img.textContent = candles[index].name;
+      
+        const desc = document.createElement('p');
+        desc.textContent = candles[index].description;
+      
+        candle.appendChild(img);
+        candle.appendChild(desc);
+        slide.appendChild(candle);
+      });
   
     carousel.appendChild(slide);
   }
