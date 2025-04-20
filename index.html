@@ -13,6 +13,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
 </head>
 <body>
+  <header class="navbar">
+    <nav class="nav-links" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="synthline.html">Synthline</a>
+      <a href="#contact">Contact</a>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </nav>
+  </header>
   <div id="fog-layer"></div>
   <div class="overlay">
     <div class="content-box">
@@ -31,5 +39,13 @@
   </div>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="script.js"></script>
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("navMenu");
+  
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+  </script>
+  <div id="particles-js"></div>
 </body>
-<div id="particles-js"></div>
