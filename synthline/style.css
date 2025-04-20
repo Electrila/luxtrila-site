@@ -176,17 +176,31 @@ body, html {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .carousel {
-    width: 90%;
+  .carousel-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
   }
-
-  .title {
-    font-size: 2.5rem;
+  
+  .arrow {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
   }
-
+  
   .candle-img {
-    width: 160px;
-    height: 160px;
+    width: 140px;
+    height: 140px;
+    font-size: 1rem;
+  }
+  
+  .candle p {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
   }
 }
 
@@ -199,6 +213,21 @@ body, html {
 
   .arrow {
     font-size: 3rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .arrow {
+    font-size: 1.6rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .glow-divider {
+    width: 80%;
   }
 }
 
