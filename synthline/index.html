@@ -8,19 +8,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-
+  <div class="background-dim"></div>
   <main class="synth-page">
     <header class="hero">
       <h1 class="title">SYNTHLINE</h1>
+      <div class="glow-divider"></div>
       <p class="subtitle">Limited Edition</p>
     </header>
 
     <section class="carousel-wrapper">
       <button class="arrow left" onclick="prevCandle()">&#10094;</button>
 
-      <div class="carousel" id="carousel">
-        <!-- JS inserts candle slides here -->
-      </div>
+      <div class="carousel" id="carousel"></div>
 
       <button class="arrow right" onclick="nextCandle()">&#10095;</button>
     </section>

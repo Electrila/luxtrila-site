@@ -13,6 +13,22 @@ body, html {
   overflow-x: hidden;
 }
 
+.background-dim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.75) 90%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
 /* Header */
 .hero {
   text-align: center;
@@ -36,11 +52,24 @@ body, html {
     0 0 30px #ff66cc;
 }
 
+.glow-divider {
+  width: 600px;
+  height: 4px;
+  margin: 1.5rem auto;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #ff7ed4, #730b9c, #fab1f4);
+  background-size: 400%;
+  box-shadow:
+    0 0 8px #ff33bb,
+    0 0 12px #ff66cc,
+    0 0 24px #ff00cc;
+}
+
 .subtitle {
-  font-size: 1.1rem;
-  color: #cfaeff;
+  font-size: 2.25rem;
+  color: #ffaeff;
   text-shadow: 0 0 6px #aa66ff;
-  margin-top: 0.5rem;
+  margin-top: 2rem;
 }
 
 /* Carousel Layout */
@@ -106,21 +135,41 @@ body, html {
   background-color: #1a002f;
   color: #ff99ff;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
+  font-size: 2rem;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-shadow: 0 0 8px #ff33cc;
-  box-shadow: 0 0 20px #ff33cc55;
   margin-bottom: 1rem;
 }
 
+.candle-img:hover {
+  box-shadow:
+    0 0 8px #aa00ff,
+    0 0 12px #ff33cc,
+    0 0 24px #ff66cc;
+  transition: box-shadow 0.5s ease;
+}
+
 .candle p {
-  font-size: 0.95rem;
+  display: none;
+  font-size: 0.1.25rem;
   color: #f0caff;
   text-shadow: 0 0 4px #aa66ff;
-  padding: 0 1rem;
+  line-height: 1.4;
+  padding: 0.75rem 1rem;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  background: rgba(10, 0, 25, 0.65);
+  backdrop-filter: blur(5px);
+
+  /* Outer glow */
+  box-shadow:
+    0 0 3px #aa00ff,
+    0 0 5px #ff33cc,
+    0 0 12px #ff66cc,
+    inset 0 0 12px #22003344;
 }
 
 /* Responsive */
