@@ -127,6 +127,7 @@ body, html {
 .candle.center {
   transform: scale(1.15);
   opacity: 1;
+  animation: pulseCenter 0.7s ease;
 }
 
 .candle-img {
@@ -144,7 +145,7 @@ body, html {
   margin-bottom: 1rem;
 }
 
-.candle-img:hover {
+.candle.center .candle-img:hover {
   box-shadow:
     0 0 8px #aa00ff,
     0 0 12px #ff33cc,
@@ -208,4 +209,33 @@ body, html {
 /* Only show for the center candle */
 .candle.center p {
   display: block;
+}
+
+/* Carousel rotation animation */
+.carousel-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.8s ease-in-out;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.carousel.rotate-left {
+  animation: rotateLeft 0.8s ease-in-out;
+}
+
+.carousel.rotate-right {
+  animation: rotateRight 0.8s ease-in-out;
+}
+
+@keyframes pulseCenter {
+  0% {
+    transform: scale(1) rotateY(0deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.15) rotateY(0deg);
+    opacity: 1;
+  }
 }

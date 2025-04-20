@@ -60,13 +60,23 @@ const candles = [
   }
   
   function nextCandle() {
-    current = (current + 1) % candles.length;
-    renderCarousel();
+    const carousel = document.getElementById('carousel');
+    carousel.classList.add('rotate-left');
+    setTimeout(() => {
+      current = (current + 1) % candles.length;
+      renderCarousel();
+      carousel.classList.remove('rotate-left');
+    }, 400);
   }
   
   function prevCandle() {
-    current = (current - 1 + candles.length) % candles.length;
-    renderCarousel();
+    const carousel = document.getElementById('carousel');
+    carousel.classList.add('rotate-right');
+    setTimeout(() => {
+      current = (current - 1 + candles.length) % candles.length;
+      renderCarousel();
+      carousel.classList.remove('rotate-right');
+    }, 400);
   }
   
   window.onload = () => {
