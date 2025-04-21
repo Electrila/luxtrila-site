@@ -1,36 +1,32 @@
 const candles = [
   {
     name: "Neon Nights",
-    description: "Cardamom + Sandalwood + Moss"
+    description: "Electric jasmine & plum under neon skies."
   },
   {
     name: "Dreamdrive",
-    description: "Pine + Vanilla + Cedar"
+    description: "Cool ozone & bergamot on midnight roads."
   },
   {
     name: "Lucid Fuse",
-    description: "Bergamot + Chocolate + Amber"
+    description: "Pink pepper & vanilla sparks with cedar."
   },
   {
     name: "Chromafloat",
-    description: "Jasmine + Citrus + Aquatic"
+    description: "Crushed orchid & ambient amber uplift."
   },
   {
     name: "Hyperlume",
-    description: "Lemon + Pink Grapefruit + Green Leaves"
+    description: "Lemon drift, mint, and synthetic clarity."
   },
   {
     name: "Midnight Arcade",
-    description: "Coffee + Smoke + Praline"
+    description: "Hot caramel & cola fizz in velvet glow."
   }
 ];
 
-let startX = 0;
-let currentX = 0;
-let isDragging = false;
 let current = 0;
 
-// Render carousel slides
 function renderCarousel() {
   const carousel = document.getElementById("carousel");
   carousel.innerHTML = "";
@@ -38,28 +34,29 @@ function renderCarousel() {
   const slide = document.createElement("div");
   slide.className = "carousel-slide";
 
-  const prev = (current - 1 + candles.length) % candles.length;
-  const next = (current + 1) % candles.length;
-
-  [prev, current, next].forEach((index, i) => {
+  candles.forEach((candleData, index) => {
     const candle = document.createElement("div");
     candle.className = "candle";
-    if (i === 1) {
-      candle.classList.add("center");
-    } else {
-      // Enable click on side candles
-      candle.addEventListener("click", () => {
-        if (i === 0) prevCandle();
-        if (i === 2) nextCandle();
-      });
-    }
+
+    // Rotation logic
+    const angle = (index - current) * 60;
+    candle.style.transform = `rotateY(${angle}deg) translateZ(300px)`;
+    if (index === current) candle.classList.add("center");
+
+    // Make side candles clickable
+    candle.addEventListener("click", () => {
+      if (index !== current) {
+        current = index;
+        renderCarousel();
+      }
+    });
 
     const img = document.createElement("div");
     img.className = "candle-img";
-    img.textContent = candles[index].name;
+    img.textContent = candleData.name;
 
     const desc = document.createElement("p");
-    desc.textContent = candles[index].description;
+    desc.textContent = candleData.description;
 
     candle.appendChild(img);
     candle.appendChild(desc);
@@ -67,85 +64,80 @@ function renderCarousel() {
   });
 
   carousel.appendChild(slide);
-
-  const slide = document.querySelector('.carousel-slide');
-
-  slide.addEventListener('touchstart', e => {
-    isDragging = true;
-    startX = e.touches[0].clientX;
-    slide.style.transition = 'none';
-  });
-
-  slide.addEventListener('touchmove', e => {
-    if (!isDragging) return;
-    currentX = e.touches[0].clientX;
-    const deltaX = currentX - startX;
-    slide.style.transform = `translateX(${deltaX}px)`;
-  });
-
-  slide.addEventListener('touchend', () => {
-    if (!isDragging) return;
-    isDragging = false;
-    const deltaX = currentX - startX;
-
-    slide.style.transition = 'transform 0.4s ease';
-    slide.style.transform = 'translateX(0)';
-
-    if (deltaX < -50) {
-      nextCandle(); // swiped left
-    } else if (deltaX > 50) {
-      prevCandle(); // swiped right
-    }
-  });
+  renderDots();
+  addSwipeListeners(slide);
 }
 
-// Rotate carousel right
-function nextCandle() {
-  const carousel = document.getElementById("carousel");
-  carousel.classList.add("rotate-left");
-  setTimeout(() => {
+function renderDots() {
+  const existing = document.querySelector(".dot-container");
+  if (existing) existing.remove();
+
+  const container = document.createElement("div");
+  container.className = "dot-container";
+
+  candles.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.className = "dot" + (index === current ? " active" : "");
+    dot.addEventListener("click", () => {
+      current = index;
+      renderCarousel();
+    });
+    container.appendChild(dot);
+  });
+
+  document.querySelector("main").appendChild(container);
+}
+
+// Swipe + Drag support
+let startX = 0;
+let currentX = 0;
+let isDragging = false;
+let dragStartTime = 0;
+
+function addSwipeListeners(slide) {
+  slide.addEventListener("touchstart", onDragStart, { passive: true });
+  slide.addEventListener("touchmove", onDragMove, { passive: true });
+  slide.addEventListener("touchend", onDragEnd);
+
+  slide.addEventListener("mousedown", onDragStart);
+  slide.addEventListener("mousemove", onDragMove);
+  slide.addEventListener("mouseup", onDragEnd);
+  slide.addEventListener("mouseleave", onDragEnd);
+}
+
+function onDragStart(e) {
+  isDragging = true;
+  dragStartTime = Date.now();
+  startX = getX(e);
+  currentX = startX;
+}
+
+function onDragMove(e) {
+  if (!isDragging) return;
+  currentX = getX(e);
+}
+
+function onDragEnd() {
+  if (!isDragging) return;
+  isDragging = false;
+
+  const deltaX = currentX - startX;
+  const timeDiff = Date.now() - dragStartTime;
+  const velocity = deltaX / timeDiff;
+
+  if (deltaX < -50 || velocity < -0.3) {
     current = (current + 1) % candles.length;
-    renderCarousel();
-    carousel.classList.remove("rotate-left");
-  }, 400);
-}
-
-// Rotate carousel left
-function prevCandle() {
-  const carousel = document.getElementById("carousel");
-  carousel.classList.add("rotate-right");
-  setTimeout(() => {
+  } else if (deltaX > 50 || velocity > 0.3) {
     current = (current - 1 + candles.length) % candles.length;
-    renderCarousel();
-    carousel.classList.remove("rotate-right");
-  }, 400);
-}
-
-// Swipe gesture support for mobile
-const swipeArea = document.addEventListener("touchstart", handleTouchStart, false);
-document.addEventListener("touchend", handleTouchEnd, false);
-
-let touchStartX = 0;
-let touchEndX = 0;
-
-function handleTouchStart(e) {
-  touchStartX = e.changedTouches[0].screenX;
-}
-
-function handleTouchEnd(e) {
-  touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
-}
-
-function handleSwipe() {
-  if (touchEndX < touchStartX - 30) {
-    nextCandle(); // swipe left
-  } else if (touchEndX > touchStartX + 30) {
-    prevCandle(); // swipe right
   }
-}
-
-// Initialize on load
-window.onload = () => {
   renderCarousel();
 }
+
+function getX(e) {
+  return e.touches ? e.touches[0].clientX : e.clientX;
+}
+
+// Init
+window.onload = () => {
+  renderCarousel();
+};

@@ -100,7 +100,9 @@ body, html {
   transition: transform 0.8s ease-in-out;
   will-change: transform;
   transform-style: preserve-3d;
-  perspective: 1000px;
+  perspective: 1200px;
+  position: relative;
+  height: 320px;
 }
 
 .carousel.rotate-left {
@@ -117,7 +119,9 @@ body, html {
   text-align: center;
   transform: scale(0.8);
   opacity: 0.5;
-  transition: transform 0.4s ease;
+  transition: transform 0.8s ease;
+  position: absolute;
+  transform-origin: center center;
 }
 
 .candle.center {
@@ -180,6 +184,32 @@ body, html {
 }
 .candle:not(.center):hover .candle-img {
   box-shadow: 0 0 10px #ff66cc88;
+}
+
+.dot-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff99ff;
+  box-shadow: 0 0 6px #ff33cc;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  opacity: 1;
+  box-shadow: 0 0 10px #ff66cc, 0 0 18px #ff33cc;
 }
 
 /* Footer */
