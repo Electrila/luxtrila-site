@@ -68,6 +68,7 @@ body, html {
 
 .subtitle {
   font-size: 2.25rem;
+  margin-bottom: 3rem;
   color: #ffaeff;
   text-shadow: 0 0 6px #aa66ff;
 }
@@ -77,9 +78,10 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 0.5rem;
   flex-direction: column;
-  gap: 1.5rem;
+  margin-top: 1rem;
+  gap: 0;
 }
 
 .carousel {
@@ -96,11 +98,11 @@ body, html {
 .carousel-slide {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
   width: 100%;
   max-width: 900px;
-  transition: transform 0.5s ease;
+  min-height: 340px;
 }
 
 .carousel.rotate-left {
@@ -110,15 +112,21 @@ body, html {
   animation: rotateRight 0.8s ease-in-out;
 }
 
+/* Candle card */
 .candle {
   display: flex;
+  flex: 1 1 250px;
+  max-width: 260px;
+  min-width: 200px;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  width: 250px;
+  flex-shrink: 0;
   transform: scale(0.65);
   opacity: 0.2;
   transition: all 0.3s ease;
   z-index: 1;
+  min-height: 330px;
 }
 
 .candle.center {
@@ -142,16 +150,16 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   border-radius: 10px;
-  text-shadow: 0 0 8px #ff33cc;
+  flex-shrink: 0;
   margin-bottom: 1rem;
+  text-shadow: 0 0 8px #ff33cc;
   transition: box-shadow 0.3s ease;
 }
 
 .candle.center .candle-img {
-  box-shadow:
-    0 0 12px #ff33cc,
-    0 0 24px #ff66cc;
+  box-shadow: 0 0 12px #ff33cc, 0 0 24px #ff66cc;
 }
 
 .candle:not(.center) .candle-img {
@@ -162,15 +170,16 @@ body, html {
   display: none;
   font-size: 0.92rem;
   color: #f0caff;
-  text-shadow: 0 0 4px #aa66ff;
   background: rgba(10, 0, 25, 0.65);
+  text-shadow: 0 0 4px #aa66ff;
   backdrop-filter: blur(5px);
   padding: 0.75rem 1rem;
+  margin-bottom: 0;
   border-radius: 10px;
-  margin-top: 0.5rem;
-  box-shadow:
-    0 0 12px #ff33cc,
-    0 0 24px #ff66cc;
+  max-width: 100%;
+  line-height: 1.5;
+  text-align: center;
+  box-shadow: 0 0 12px #ff33cc, 0 0 24px #ff66cc;
 }
 
 .candle.center p {
@@ -185,11 +194,12 @@ body, html {
   box-shadow: 0 0 10px #ff66cc88;
 }
 
+/* Arrows & Dots */
 .arrow-controls {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 0;
+  gap: 2.5rem;
+  margin-top: 0.5rem;
 }
 
 .arrow {
@@ -198,10 +208,8 @@ body, html {
   color: #ff66cc;
   font-size: 2.5rem;
   cursor: pointer;
-  transition: transform 0.2 ease;
+  transition: transform 0.2s ease;
   text-shadow: 0 0 10px #ff33bb;
-  padding: 1rem;
-  z-index: 3;
 }
 
 .arrow:hover {
@@ -210,9 +218,11 @@ body, html {
 
 .dot-container {
   display: flex;
+  align-self: center;
   justify-content: center;
   gap: 0.75rem;
-  margin-top: 0;
+  margin-top: 0.5;
+  margin-bottom: 0.25rem;
 }
 
 .dot {
@@ -227,8 +237,6 @@ body, html {
 }
 
 .dot.active {
-  width: 12px;
-  height: 12px;
   background: #ffffff;
   opacity: 1;
   box-shadow: 0 0 10px #ff66cc, 0 0 18px #ff33cc;
@@ -237,7 +245,7 @@ body, html {
 /* Footer */
 .logo-footer {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
 }
 .logo-footer img {
   width: 200px;
@@ -246,41 +254,44 @@ body, html {
   opacity: 1;
 }
 
-/* Mobile Settings */
+/* Mobile */
 @media (max-width: 768px) {
-  .arrow {
-    display: inline-block;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
-  }
-  
   .title {
     font-size: 2.5rem;
   }
-  
+
   .subtitle {
     font-size: 1.5rem;
   }
-  
+
   .glow-divider {
     width: 80%;
   }
-  
+
   .carousel-slide {
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0rem;
+    position: relative;
   }
-  
-  /* Adjust the candle images */
+
   .candle-img {
     width: 140px;
     height: 140px;
     font-size: 1rem;
   }
-  
-  /* Adjust candle description text */
-  .candle p {
-    font-size: 0.85rem;
-    padding: 0.5rem 0.75rem;
+
+  .candle {
+    width: 180px;
+    min-height: 290px;
+    transform: scale(0.75);
+    margin: 0 -75px;
+  }
+
+  .candle.center {
+    transform: scale(1);
+  }
+
+  .arrow {
+    font-size: 2rem;
   }
 }
