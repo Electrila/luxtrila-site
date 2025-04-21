@@ -191,7 +191,7 @@ body, html {
 }
 
 .candle:not(.center):hover {
-  transform: scale(0.82);
+  transform: scale(0.75);
   cursor: pointer;
 }
 .candle:not(.center):hover .candle-img {
@@ -203,7 +203,7 @@ body, html {
   display: flex;
   justify-content: center;
   gap: 2.5rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .arrow {
@@ -312,6 +312,12 @@ body, html {
     opacity: 1;
     z-index: 2;
     margin: 0;
+  }
+
+  .candle.center .candle-img {
+    width: 275px;
+    height: 275px;
+    font-size: 2.5rem;
   }
 
   .arrow {

@@ -2,7 +2,7 @@ const candles = [
   { name: "Neon Nights", description: "Cardamom + Sandalwood + Moss" },
   { name: "Dreamdrive", description: "Pine + Vanilla + Cedar" },
   { name: "Lucid Fuse", description: "Bergamot + Chocolate + Amber" },
-  { name: "Chromafloat", description: "Jasmine + Citrus + Aquatic" },
+  { name: "Chromafloat", description: "Muguet + Pineapple + Aquatic" },
   { name: "Hyperlume", description: "Lemon + Pink Grapefruit + Green Leaves" },
   { name: "Midnight Arcade", description: "Coffee + Praline + Smoke" }
 ];
