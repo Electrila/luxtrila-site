@@ -1,6 +1,4 @@
-console.log("Script is loaded");
-
-const candles = [
+  const candles = [
     {
       name: "Neon Nights",
       description: "Cardamom + Sandalwood + Moss"
@@ -94,3 +92,25 @@ const candles = [
     renderCarousel();
   };
   
+  // Swipe gesture detection for mobile
+const carousel = document.querySelector('.carousel');
+let touchStartX = 0;
+let touchEndX = 0;
+
+carousel.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+carousel.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleGesture();
+});
+
+function handleGesture() {
+  if (touchEndX < touchStartX - 30) {
+    nextCandle(); // swipe left
+  }
+  if (touchEndX > touchStartX + 30) {
+    prevCandle(); // swipe right
+  }
+}
