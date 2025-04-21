@@ -34,6 +34,24 @@ function renderCarousel() {
     candle.appendChild(img);
     candle.appendChild(desc);
 
+    // Only append dots below center candle
+    if (i === 1) {
+      const dots = document.createElement("div");
+      dots.className = "dot-container inside";
+
+      candles.forEach((_, dotIndex) => {
+        const dot = document.createElement("div");
+        dot.className = "dot" + (dotIndex === current ? " active" : "");
+        dot.addEventListener("click", () => {
+          current = dotIndex;
+          renderCarousel();
+        });
+        dots.appendChild(dot);
+      });
+
+      candle.appendChild(dots);
+    }
+
     if (i === 0) candle.onclick = prevCandle;
     if (i === 2) candle.onclick = nextCandle;
 
@@ -41,24 +59,7 @@ function renderCarousel() {
   });
 
   carousel.appendChild(slide);
-  renderDots();
 }
-
-function renderDots() {
-  const dotContainer = document.getElementById("dotContainer");
-  dotContainer.innerHTML = "";
-
-  candles.forEach((_, index) => {
-    const dot = document.createElement("div");
-    dot.className = "dot" + (index === current ? " active" : "");
-    dot.onclick = () => {
-      current = index;
-      renderCarousel();
-    };
-    dotContainer.appendChild(dot);
-  });
-}
-
 function nextCandle() {
   current = (current + 1) % candles.length;
   renderCarousel();
