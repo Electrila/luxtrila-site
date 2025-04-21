@@ -25,6 +25,9 @@ const candles = [
   }
 ];
 
+let startX = 0;
+let currentX = 0;
+let isDragging = false;
 let current = 0;
 
 // Render carousel slides
@@ -64,6 +67,36 @@ function renderCarousel() {
   });
 
   carousel.appendChild(slide);
+
+  const slide = document.querySelector('.carousel-slide');
+
+  slide.addEventListener('touchstart', e => {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    slide.style.transition = 'none';
+  });
+
+  slide.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    currentX = e.touches[0].clientX;
+    const deltaX = currentX - startX;
+    slide.style.transform = `translateX(${deltaX}px)`;
+  });
+
+  slide.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    const deltaX = currentX - startX;
+
+    slide.style.transition = 'transform 0.4s ease';
+    slide.style.transform = 'translateX(0)';
+
+    if (deltaX < -50) {
+      nextCandle(); // swiped left
+    } else if (deltaX > 50) {
+      prevCandle(); // swiped right
+    }
+  });
 }
 
 // Rotate carousel right
