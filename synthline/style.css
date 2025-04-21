@@ -97,12 +97,10 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.8s ease-in-out;
-  will-change: transform;
-  transform-style: preserve-3d;
-  perspective: 1200px;
-  position: relative;
-  height: 320px;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 900px;
+  transition: transform 0.5s ease;
 }
 
 .carousel.rotate-left {
@@ -117,17 +115,16 @@ body, html {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transform: scale(0.8);
-  opacity: 0.5;
-  transition: transform 0.8s ease;
-  position: absolute;
-  transform-origin: center center;
+  transform: scale(0.65);
+  opacity: 0.2;
+  transition: all 0.3s ease;
+  z-index: 1;
 }
 
 .candle.center {
   transform: scale(1.15);
   opacity: 1;
-  animation: pulseCenter 0.7s ease;
+  z-index: 2;
 }
 
 @keyframes pulseCenter {
@@ -151,11 +148,14 @@ body, html {
   transition: box-shadow 0.3s ease;
 }
 
-.candle.center .candle-img:hover {
+.candle.center .candle-img {
   box-shadow:
-    0 0 8px #aa00ff,
     0 0 12px #ff33cc,
     0 0 24px #ff66cc;
+}
+
+.candle:not(.center) .candle-img {
+  filter: blur(1px);
 }
 
 .candle p {
@@ -186,11 +186,34 @@ body, html {
   box-shadow: 0 0 10px #ff66cc88;
 }
 
+.arrow-controls {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 0;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  color: #ff66cc;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.2 ease;
+  text-shadow: 0 0 10px #ff33bb;
+  padding: 1rem;
+  z-index: 3;
+}
+
+.arrow:hover {
+  transform: scale(1.2);
+}
+
 .dot-container {
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  margin-top: 1rem;
+  margin-top: 0;
 }
 
 .dot {
@@ -227,55 +250,36 @@ body, html {
 /* Mobile Settings */
 @media (max-width: 768px) {
   .arrow {
-    display: none;
+    display: inline-block;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
   }
-
+  
   .title {
     font-size: 2.5rem;
   }
-
+  
   .subtitle {
     font-size: 1.5rem;
   }
-
+  
   .glow-divider {
     width: 80%;
   }
-
+  
   .carousel-slide {
     justify-content: center;
     gap: 0.5rem;
   }
-
-  .candle {
-    flex-shrink: 0;
-    width: 100px;
-    transform: scale(0.6);
-    opacity: 0.3;
-    transition: all 0.3s ease;
-  }
-
-  .candle.center {
-    transform: scale(1);
-    opacity: 1;
-    z-index: 1;
-  }
-
+  
+  /* Adjust the candle images */
   .candle-img {
-    width: 120px;
-    height: 120px;
-    font-size: 0.95rem;
-  }
-
-  .candle.center .candle-img {
     width: 140px;
     height: 140px;
-    font-size: 1.1rem;
-    box-shadow:
-      0 0 12px #ff33cc,
-      0 0 24px #ff66cc;
+    font-size: 1rem;
   }
-
+  
+  /* Adjust candle description text */
   .candle p {
     font-size: 0.85rem;
     padding: 0.5rem 0.75rem;

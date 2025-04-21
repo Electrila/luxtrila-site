@@ -1,28 +1,10 @@
 const candles = [
-  {
-    name: "Neon Nights",
-    description: "Electric jasmine & plum under neon skies."
-  },
-  {
-    name: "Dreamdrive",
-    description: "Cool ozone & bergamot on midnight roads."
-  },
-  {
-    name: "Lucid Fuse",
-    description: "Pink pepper & vanilla sparks with cedar."
-  },
-  {
-    name: "Chromafloat",
-    description: "Crushed orchid & ambient amber uplift."
-  },
-  {
-    name: "Hyperlume",
-    description: "Lemon drift, mint, and synthetic clarity."
-  },
-  {
-    name: "Midnight Arcade",
-    description: "Hot caramel & cola fizz in velvet glow."
-  }
+  { name: "Neon Nights", description: "Cardamom + Sandalwood + Moss" },
+  { name: "Dreamdrive", description: "Pine + Vanilla + Cedar" },
+  { name: "Lucid Fuse", description: "Bergamot + Chocolate + Amber" },
+  { name: "Chromafloat", description: "Jasmine + Citrus + Aquatic" },
+  { name: "Hyperlume", description: "Lemon + Pink Grapefruit + Green Leaves" },
+  { name: "Midnight Arcade", description: "Coffee + Praline + Smoke" }
 ];
 
 let current = 0;
@@ -34,110 +16,61 @@ function renderCarousel() {
   const slide = document.createElement("div");
   slide.className = "carousel-slide";
 
-  candles.forEach((candleData, index) => {
+  const prev = (current - 1 + candles.length) % candles.length;
+  const next = (current + 1) % candles.length;
+
+  [prev, current, next].forEach((index, i) => {
     const candle = document.createElement("div");
     candle.className = "candle";
-
-    // Rotation logic
-    const angle = (index - current) * 60;
-    candle.style.transform = `rotateY(${angle}deg) translateZ(300px)`;
-    if (index === current) candle.classList.add("center");
-
-    // Make side candles clickable
-    candle.addEventListener("click", () => {
-      if (index !== current) {
-        current = index;
-        renderCarousel();
-      }
-    });
+    if (i === 1) candle.classList.add("center");
 
     const img = document.createElement("div");
     img.className = "candle-img";
-    img.textContent = candleData.name;
+    img.textContent = candles[index].name;
 
     const desc = document.createElement("p");
-    desc.textContent = candleData.description;
+    desc.textContent = candles[index].description;
 
     candle.appendChild(img);
     candle.appendChild(desc);
+
+    if (i === 0) candle.onclick = prevCandle;
+    if (i === 2) candle.onclick = nextCandle;
+
     slide.appendChild(candle);
   });
 
   carousel.appendChild(slide);
   renderDots();
-  addSwipeListeners(slide);
 }
 
 function renderDots() {
-  const existing = document.querySelector(".dot-container");
-  if (existing) existing.remove();
-
-  const container = document.createElement("div");
-  container.className = "dot-container";
+  const dotContainer = document.getElementById("dotContainer");
+  dotContainer.innerHTML = "";
 
   candles.forEach((_, index) => {
     const dot = document.createElement("div");
     dot.className = "dot" + (index === current ? " active" : "");
-    dot.addEventListener("click", () => {
+    dot.onclick = () => {
       current = index;
       renderCarousel();
-    });
-    container.appendChild(dot);
+    };
+    dotContainer.appendChild(dot);
   });
-
-  document.querySelector("main").appendChild(container);
 }
 
-// Swipe + Drag support
-let startX = 0;
-let currentX = 0;
-let isDragging = false;
-let dragStartTime = 0;
-
-function addSwipeListeners(slide) {
-  slide.addEventListener("touchstart", onDragStart, { passive: true });
-  slide.addEventListener("touchmove", onDragMove, { passive: true });
-  slide.addEventListener("touchend", onDragEnd);
-
-  slide.addEventListener("mousedown", onDragStart);
-  slide.addEventListener("mousemove", onDragMove);
-  slide.addEventListener("mouseup", onDragEnd);
-  slide.addEventListener("mouseleave", onDragEnd);
-}
-
-function onDragStart(e) {
-  isDragging = true;
-  dragStartTime = Date.now();
-  startX = getX(e);
-  currentX = startX;
-}
-
-function onDragMove(e) {
-  if (!isDragging) return;
-  currentX = getX(e);
-}
-
-function onDragEnd() {
-  if (!isDragging) return;
-  isDragging = false;
-
-  const deltaX = currentX - startX;
-  const timeDiff = Date.now() - dragStartTime;
-  const velocity = deltaX / timeDiff;
-
-  if (deltaX < -50 || velocity < -0.3) {
-    current = (current + 1) % candles.length;
-  } else if (deltaX > 50 || velocity > 0.3) {
-    current = (current - 1 + candles.length) % candles.length;
-  }
+function nextCandle() {
+  current = (current + 1) % candles.length;
   renderCarousel();
 }
 
-function getX(e) {
-  return e.touches ? e.touches[0].clientX : e.clientX;
+function prevCandle() {
+  current = (current - 1 + candles.length) % candles.length;
+  renderCarousel();
 }
 
-// Init
 window.onload = () => {
+  document.getElementById("prevBtn").onclick = prevCandle;
+  document.getElementById("nextBtn").onclick = nextCandle;
   renderCarousel();
 };
