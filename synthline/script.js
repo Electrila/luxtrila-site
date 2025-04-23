@@ -34,7 +34,6 @@ function renderCarousel() {
     candle.appendChild(img);
     candle.appendChild(desc);
 
-    // Only append dots below center candle
     if (i === 1) {
       const dots = document.createElement("div");
       dots.className = "dot-container inside";
