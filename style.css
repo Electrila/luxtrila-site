@@ -20,7 +20,6 @@ body {
   min-height: 100vh;
   padding: 8vh 1rem 6vh;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,9 +67,14 @@ body {
   display: inline-block;
 }
 
-.nav-links li a:hover {
-  transform: scale(1.15);
-  text-shadow: 0 0 10px #ff33bb;
+@media (min-width: 769px) {
+  .nav-links li a:hover {
+    transform: scale(1.2);
+    text-shadow:
+      0 0 5px #ff66cc,
+      0 0 10px #ff99dd,
+      0 0 15px #ff33bb;
+  }
 }
 
 .nav-toggle {
