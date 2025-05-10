@@ -26,88 +26,6 @@ body {
   justify-content: flex-start;
 }
 
-/* Nav menu */
-.nav-menu {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(0, 0, 20, 0.7);
-  backdrop-filter: blur(8px);
-  padding: 0.5rem 2.5rem;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 0 15px #ff33bb88;
-}
-
-.nav-logo {
-  font-family: 'Orbitron', sans-serif;
-  color: #ff66cc;
-  font-size: 1.25rem;
-  text-shadow: 0 0 8px #ff33cc;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 4rem;
-}
-
-.nav-links li a {
-  font-family: 'Orbitron', sans-serif;
-  color: #ffccff;
-  text-shadow: 
-    0 0 6px #ff66cc,
-    0 0 12px #ff99dd;
-  text-decoration: none;
-  font-size: 1.1rem;
-  text-shadow: 0 0 6px #ff33bb;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-@media (min-width: 769px) {
-  .nav-links li a:hover {
-    transform: scale(1.2);
-    text-shadow:
-      0 0 5px #ff66cc,
-      0 0 10px #ff99dd,
-      0 0 15px #ff33bb;
-  }
-}
-
-.nav-toggle {
-  display: none;
-  font-size: 2rem;
-  color: #ff66cc;
-  cursor: pointer;
-  text-shadow: 0 0 6px #ff33bb;
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    flex-direction: column;
-    width: 100%;
-    background: rgba(0, 0, 20, 0.95);
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-}
-
 /* Central content */
 .content-box {
   max-width: 1200px;
@@ -168,25 +86,33 @@ body {
     0 0 6px #ff66cc,
     0 0 12px #ff99dd;
   margin-top: 2.5rem;
-  margin-bottom: 0;
+  margin-bottom: 3.5rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
 /* Coming soon text */
-.coming-soon {
+.cta-button {
   font-family: 'Monoton', cursive;
-  font-size: 5.5rem;
+  font-size: 3.5rem;
   font-weight: normal;
   color: transparent;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   opacity: 0;
+  transform: scale(1);
 
   -webkit-text-stroke: 0.5px transparent;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s ease;
 
   animation: flickerSnap 2.2s ease-in-out 1.2s forwards;
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
 }
 
 /* Particle container */
@@ -306,7 +232,7 @@ canvas {
     font-size: 2rem;
   }
 
-  .coming-soon {
+  .cta-button {
     font-size: 3rem;
   }
 

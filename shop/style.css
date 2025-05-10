@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0a0144 url('assets/background2.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Outfit', sans-serif;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 0, 30, 0.9);
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  border-bottom: 1px solid #ff33bb33;
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  color: #ff66cc;
+  font-weight: bold;
+  text-shadow: 0 0 8px #ff33bb;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.shop-content {
+  padding: 8rem 2rem 4rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.shop-title {
+  text-align: center;
+  font-size: 3.5rem;
+  color: #ff66cc;
+  text-shadow: 0 0 10px #ff33bb;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 3rem;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px #ff99ff;
+}
+
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  flex-wrap: wrap;
+}
+
+.product-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.product-image {
+  flex: 1 1 300px;
+  height: auto;
+  background: none;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px #ff33cc22;
+  padding: 1rem;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #ff66cc66;
+}
+
+.product-info {
+  flex: 1 1 400px;
+}
+
+.product-info h3 {
+  font-size: 2.5rem;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+.line-tag {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  color: #ffccff;
+  text-shadow: 0 0 6px #ff66cc;
+}
+
+.line-tag.aura { color: #ff99dd; }
+.line-tag.noir { color: #05052c; }
+
+.scent-notes {
+  font-size: 1.5rem;
+  color: #eee;
+  margin-bottom: 0.5rem;
+}
+
+.product-desc {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.buy-button {
+  display: inline-block;
+  background: #ff33cc;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 10px #ff33cc99;
+  transition: all 0.3s ease;
+}
+
+.buy-button:hover {
+  background: #ff66cc;
+  box-shadow: 0 0 20px #ff33cccc;
+  transform: scale(1.2);
+}
+
+.candle-rule {
+  height: 2px;
+  border: none;
+  width: 80%;
+  margin: 2rem auto 3rem;
+  background: linear-gradient(to right, #ff00aa, #ff66cc, #ff00aa);
+  box-shadow:
+    0 0 6px #ff33cc,
+    0 0 12px #ff66cc,
+    0 0 20px #ff99dd;
+  opacity: 0.9;
+  border-radius: 2px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  padding: 2rem;
+}
