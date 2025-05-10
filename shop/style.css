@@ -83,7 +83,7 @@ body {
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 20px #ff33cc22;
-  padding: 1rem;
+  padding: 0;
 }
 
 .product-image img {
@@ -163,4 +163,91 @@ body {
   font-size: 0.9rem;
   color: #777;
   padding: 2rem;
+}
+
+
+/* Mobile Settings */
+@media (max-width: 768px) {
+  .shop-title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .product-row {
+    flex-direction: column !important;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+  }
+
+  .product-image {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    max-width: 280px;
+  }
+
+  .product-image img {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  .product-info {
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .product-info h3 {
+    font-size: 1.8rem;
+  }
+
+  .line-tag {
+    font-size: 1.1rem;
+  }
+
+  .scent-notes {
+    font-size: 1.2rem;
+  }
+
+  .product-desc {
+    font-size: 1rem;
+  }
+
+  .buy-button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    transform: none !important;
+  }
+
+  .candle-rule {
+    width: 90%;
+    margin: 2rem auto;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    margin-top: 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
