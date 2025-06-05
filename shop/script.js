@@ -5,21 +5,25 @@ document.querySelectorAll('.image-carousel').forEach((carousel, index) => {
 
   const images = {
     0: [
+      'assets/dream-shard-product-shot-4.png',
       'assets/dream-shard.png',
-      'assets/dream-shard-product-shot-2.png',
-      'assets/dream-shard-product-shot.png'
+      'assets/dream-shard-product-shot-3.png',
+      'assets/dream-shard-product-shot-2.png'
     ],
     1: [
+      'assets/frostbyte-product-shot-3.png',
       'assets/frostbyte-product-shot-2.png',
-      'assets/frostbyte-product-shot.png',
+      'assets/frostbyte-product-shot-4.png',
       'assets/frostbyte.png'
     ],
     2: [
-      'assets/terminal-roast-product-shot.png',
+      'assets/terminal-roast-product-shot-4.png',
       'assets/terminal-roast-product-shot-2.png',
-      'assets/terminal-roast-product-shot-3.png'
+      'assets/terminal-roast-product-shot-3.png',
+      'assets/terminal-roast.png'
     ],
     3: [
+      'assets/stratoberry-product-shot-2.png',
       'assets/stratoberry-product-shot.png',
       'assets/stratoberry.png'
     ],

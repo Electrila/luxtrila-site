@@ -79,16 +79,15 @@ body {
   flex: 1 1 300px;
   height: auto;
   background: none;
-  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 20px #ff33cc22;
   padding: 0;
 }
 
 .product-image img {
-  width: 100%;
+  width: auto;
+  max-height: 350px;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 0 12px #ff66cc66;
@@ -166,8 +165,6 @@ body {
   padding: 2rem;
 }
 
-
-/* Mobile Settings */
 .menu-toggle {
   display: none;
   font-size: 2rem;
@@ -177,6 +174,7 @@ body {
 
 .image-carousel {
   position: relative;
+  max-height: 350px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -217,6 +215,7 @@ body {
   right: 0;
 }
 
+/*Mobile Settings*/
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
